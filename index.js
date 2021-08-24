@@ -1,15 +1,11 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Employee = require("./lib/Employee");
 const inquirer = require("inquirer");
-const validator = require("");
 const fs = require("fs");
 
 // create generated html file path
 const generatedHtmlFilePath = "./dist/TeamRoster.html";
-
-let teamMembers = [];
 
 inquirer
   .prompt([
@@ -49,14 +45,7 @@ inquirer
       answers.managerOfficeNumber
     );
     teamMembers.push(manager);
-    if (answers.additionalTeamMember === "Engineer") {
-      addEngineer();
-    } else if (answers.additionalTeamMember === "Intern") {
-      addIntern();
-    } else {
-      // should not run
-      generateHTML();
-    }
+    evaluateExtraTeamMemberResult(answers.ExtraTeamMember);
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -104,14 +93,7 @@ function addEngineer() {
           answers.engineerGitHub
         );
         teamMembers.push(engineer);
-        if (answers.additionalTeamMember === "Engineer") {
-          addEngineer();
-        } else if (answers.additionalTeamMember === "Intern") {
-          addIntern();
-        } else {
-          // Finish and generate HTML
-          generateHTML();
-        }
+        evaluateExtraTeamMemberResult(answers.ExtraTeamMember);
       }).catch((error) => {
         if (error.isTtyError) {
         } else {
@@ -161,14 +143,7 @@ function addIntern() {
           answers.internSchool
         );
         teamMembers.push(intern);
-        if (answers.additionalTeamMember === "Engineer") {
-          addEngineer();
-        } else if (answers.additionalTeamMember === "Intern") {
-          addIntern();
-        } else {
-          // Finish and generate HTML
-          generateHTML();
-        }
+        evaluateExtraTeamMemberResult(answers.ExtraTeamMember);
       }).catch((error) => {
         if (error.isTtyError) {
         } else {
@@ -177,7 +152,7 @@ function addIntern() {
     );
 }
 
-function evaluateExtraMemberResult(result) {
+function evaluateExtraTeamMemberResult(result) {
   if (result === "Engineer") {
     addEngineer();
   } else if (result === "Intern") {
@@ -192,13 +167,3 @@ function evaluateExtraMemberResult(result) {
 function generateHTML() {
   fs.writeFileSync(generatedHtmlFilePath, "");
 }
-
-// Function call to initialize app
-//       function init() {
-//         return inquirer.prompt(questions).then((data) => {
-//           writeToFile("GENERATEDREADME.md", generateMarkdown(data));
-//         });
-//       }
-
-//       init();
-//
