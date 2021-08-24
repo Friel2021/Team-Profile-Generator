@@ -53,6 +53,9 @@ inquirer
       addEngineer();
     } else if (answers.additionalTeamMember === "Intern") {
       addIntern();
+    } else {
+      // should not run
+      generateHTML();
     }
   })
   .catch((error) => {
@@ -67,22 +70,22 @@ function addEngineer() {
       {
         type: "input",
         name: "engineerName",
-        message: "What is your interns name?",
+        message: "What is your engineers name?",
       },
       {
         type: "input",
         name: "engineerID",
-        message: "What is your interns ID #?",
+        message: "What is your engineers ID #?",
       },
       {
         type: "input",
-        name: "internEmail",
-        message: "What is your managers email address?",
+        name: "engineerEmail",
+        message: "What is your engineers email address?",
       },
       {
         type: "input",
-        name: "internSchool",
-        message: "What is your interns school?",
+        name: "engineerGitHub",
+        message: "What is your engineers GitHub address?",
       },
       {
         type: "list",
@@ -94,13 +97,13 @@ function addEngineer() {
 
     .then(
       ((answers) => {
-        let intern = new Intern(
-          answers.internName,
-          answers.internID,
-          answers.internEmail,
-          answers.internSchool
+        let engineer = new Engineer(
+          answers.engineerName,
+          answers.engineerID,
+          answers.engineerEmail,
+          answers.engineerGitHub
         );
-        teamMembers.push(intern);
+        teamMembers.push(engineer);
         if (answers.additionalTeamMember === "Engineer") {
           addEngineer();
         } else if (answers.additionalTeamMember === "Intern") {
@@ -134,7 +137,7 @@ function addIntern() {
       {
         type: "input",
         name: "internEmail",
-        message: "What is your managers email address?",
+        message: "What is your interns email address?",
       },
       {
         type: "input",
@@ -173,6 +176,18 @@ function addIntern() {
       })
     );
 }
+
+function evaluateExtraMemberResult(result) {
+  if (result === "Engineer") {
+    addEngineer();
+  } else if (result === "Intern") {
+    addIntern();
+  } else {
+    // Finish and generate HTML
+    generateHTML();
+  }
+}
+
 // loop through array and generate HTML
 function generateHTML() {
   fs.writeFileSync(generatedHtmlFilePath, "");
