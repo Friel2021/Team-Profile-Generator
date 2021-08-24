@@ -39,26 +39,83 @@ inquirer
       message: "Please select a team member to add",
       choices: ["Engineer", "Intern"],
     },
-    {
-      type: "input",
-      message: "What is your github username?",
-      name: "Github",
-    },
-    {
-      type: "input",
-      message: "What is your email address?",
-      name: "email",
-    },
   ])
 
   .then((answers) => {
-    fs.writeFileSync(generatedHtmlFilePath, "");
+    let manager = new Manager(
+      answers.managerName,
+      answers.managerID,
+      answers.managerEmail,
+      answers.managerOfficeNumber
+    );
+    teamMembers.push(manager);
+    if (answers.additionalTeamMember === "Engineer") {
+      addEngineer();
+    } else if (answers.additionalTeamMember === "Intern") {
+      addIntern();
+    }
   })
   .catch((error) => {
     if (error.isTtyError) {
     } else {
     }
   });
+
+function addEngineer() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "engineerName",
+        message: "What is your interns name?",
+      },
+      {
+        type: "input",
+        name: "engineerID",
+        message: "What is your interns ID #?",
+      },
+      {
+        type: "input",
+        name: "internEmail",
+        message: "What is your managers email address?",
+      },
+      {
+        type: "input",
+        name: "internSchool",
+        message: "What is your interns school?",
+      },
+      {
+        type: "list",
+        name: "extraTeamMember",
+        message: "Please select a team member to add",
+        choices: ["Engineer", "Intern", "Exit"],
+      },
+    ])
+
+    .then(
+      ((answers) => {
+        let intern = new Intern(
+          answers.internName,
+          answers.internID,
+          answers.internEmail,
+          answers.internSchool
+        );
+        teamMembers.push(intern);
+        if (answers.additionalTeamMember === "Engineer") {
+          addEngineer();
+        } else if (answers.additionalTeamMember === "Intern") {
+          addIntern();
+        } else {
+          // Finish and generate HTML
+          generateHTML();
+        }
+      }).catch((error) => {
+        if (error.isTtyError) {
+        } else {
+        }
+      })
+    );
+}
 
 // calls to have extra team member added - as many times as needed
 function addIntern() {
@@ -117,7 +174,9 @@ function addIntern() {
     );
 }
 // loop through array and generate HTML
-function generateHTML() {}
+function generateHTML() {
+  fs.writeFileSync(generatedHtmlFilePath, "");
+}
 
 // Function call to initialize app
 //       function init() {
