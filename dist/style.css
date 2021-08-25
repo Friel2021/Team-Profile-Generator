@@ -1,0 +1,42 @@
+.teamNavBar {
+    background-color: #0f9dc9;
+    text-align: center;
+    color: white;
+    height: 100px;
+    width: 100%;
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBarTitle {
+    margin: auto;
+
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0%;
+    height: 100%;
+}
+
+.cardBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teamMemberCard {
+    width: 220px;
+    height: 250px;
+    background-color: #0f9dc9;
+    padding: 10px;
+    margin: 5%;
+    box-shadow: 5px 5px 3px grey;
+}
+
+.teamMemberTitle {
+    color: white;
+    text-align: center;
+}
