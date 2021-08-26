@@ -1,9 +1,4 @@
 # Team-Profile-Generator
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> bf982efeb8194975fe93d65c96518de88cf4773f
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description 
@@ -33,3 +28,6 @@ Contributors should read the installation section.
 
 ## Tests
 Run `npm test` to run Jest for tests on constructors. 
+
+## Questions
+Please email me at Friel2009@gmail.com.  Thank you
