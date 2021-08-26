@@ -1,9 +1,6 @@
-body {
-    background-color: #fffaff;
-  }
-  
   .teamNavBar {
     background-color: #0f9dc9;
+    font-size: 55px;
     text-align: center;
     color: white;
     height: 300px;
@@ -14,25 +11,22 @@ body {
     align-items: center;
   }
   
-  h1 {
-    color: #fffaff;
-  }
-  
-  h2 {
-    font-size: 24px;
-  }
-  
-  h3 {
-    font-size: 20px;
-  }
   
   .teamMemberCard {
-    width: 275px;
+    width: 285px;
+    height: 150px;
     margin: 20px;
+    background-color: #0f9dc9;
+    padding: 10px;
+    margin: 5%;
+    box-shadow: 5px 5px 3px;
+    box-shadow: indigo;
   }
   
   .cardBody {
-    box-shadow: 4px 4px 7px -1px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
   }
   
@@ -44,63 +38,10 @@ body {
   .card-body {
     background-color: #cec8bf;
   }
-  
-  a {
-    color: black;
-    text-decoration: underline;
+
+  .teamMemberTitle {
+      text-align: center;
+      color: white;
   }
   
-  ul {
-    border: none;
-  }
-  
-  li {
-    margin: 10px;
-  }
-
-
-/* .teamNavBar {
-    background-color: #0f9dc9;
-    text-align: center;
-    color: white;
-    height: 300px;
-    width: 100%;
-    margin: 0%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navBarTitle {
-    margin: auto;
-
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: larger;
-    margin: 0%;
-    height: 100%;
-}
-
-.cardBody {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.teamMemberCard {
-    width: 220px;
-    height: 250px;
-    background-color: #0f9dc9;
-    padding: 10px;
-    margin: 5%;
-    box-shadow: 5px 5px 3px;
-    box-shadow: indigo;
-}
-
-
-.teamMemberTitle {
-    color: white;
-    text-align: center;
-} */
+ 
