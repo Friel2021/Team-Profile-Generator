@@ -1,5 +1,9 @@
 # Team-Profile-Generator
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> bf982efeb8194975fe93d65c96518de88cf4773f
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description 
